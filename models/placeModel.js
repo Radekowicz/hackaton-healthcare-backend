@@ -20,6 +20,9 @@ const placeSchema = new mongoose.Schema({
       type: Number,
     },
   },
+  sorId: {
+    type: Number,
+  },
   address: {
     type: String,
   },

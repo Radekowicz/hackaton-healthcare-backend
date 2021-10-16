@@ -13,12 +13,12 @@ exports.createData = catchAsync(async (req, res, next) => {
       return next(new AppError('No document found with that ID', 404));
     }
   }
-  const place = await Place.findById(req.body.placeId);
+  const place = await Place.findOne({ sorId: req.body.placeId });
   const expectedWaitTime = Number(req.body.peopleAmount) * 30;
   const newDoc = await Data.create({
     queueLength: req.body.peopleAmount,
     expectedWaitTime,
-    place: place._id,
+    place: place.id,
   });
   res.status(201).json({
     status: 'success',
