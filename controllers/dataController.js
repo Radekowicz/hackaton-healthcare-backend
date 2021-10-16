@@ -30,4 +30,16 @@ exports.createData = catchAsync(async (req, res, next) => {
 
 exports.getAllData = factory.getAll(Data);
 
-exports.getData = factory.getOne(Data);
+exports.getData = catchAsync(async (req, res, next) => {
+  const place = await Place.findOne({ sorId: req.params.id });
+  const data = await Data.find({ place: place._id });
+  if (!data) {
+    return next(new AppError('No document found with that ID', 404));
+  }
+  res.status(200).json({
+    status: 'success',
+    data: {
+      data,
+    },
+  });
+});
