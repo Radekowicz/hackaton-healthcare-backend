@@ -1,28 +1,35 @@
 const mongoose = require('mongoose');
 
 const placeSchema = new mongoose.Schema({
-  //schemat - przepis na dokument/rekord - struktura
   name: {
     type: String,
-    required: [true, 'A place must have a name'],
-    unique: true,
-    trim: true,
+    required: [true, 'Name must be specified'],
   },
-  queueLength: {
-    type: Number,
-    required: [true, 'Length must be specified'],
-  },
-  longitude: {
-    type: String,
-  },
-  lattitude: {
-    type: String,
+  coordinates: {
+    latitude: {
+      type: Number,
+      required: [true, 'Latitude must be specified'],
+    },
+    longitude: {
+      type: Number,
+      required: [true, 'Longitude must be specified'],
+    },
   },
   city: {
     type: String,
+    required: [true, 'City must be specified'],
   },
-  telephone: {
+  telephoneNumber: {
     type: String,
+    required: [true, 'Telephone number must be specified'],
+  },
+  numberOfPeople: {
+    type: Number,
+    required: [true, 'Number of people must be specified'],
+  },
+  waitTime: {
+    type: Number,
+    required: [true, 'Wait time of people must be specified'],
   },
 });
 
