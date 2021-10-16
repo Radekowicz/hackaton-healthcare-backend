@@ -6,6 +6,7 @@ const xss = require('xss-clean');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
 const cors = require('cors');
+const dataRouter = require('./routes/dataRoutes.js');
 
 const AppError = require('./utils/appError.js');
 const globalErrorHandler = require('./controllers/errorController.js');
@@ -45,7 +46,7 @@ app.use((req, res, next) => {
 });
 
 // app.use('/', viewRouter);
-// app.use('/api/v1/tours', tourRouter);
+app.use('/api/v1/data', dataRouter);
 // app.use('/api/v1/users', userRouter);
 // app.use('/api/v1/reviews', reviewRouter);
 // app.use('/api/v1/bookings', bookingRouter);

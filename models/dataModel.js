@@ -10,6 +10,10 @@ const dataSchema = new mongoose.Schema({
     type: Number,
     required: [true, 'Wait time must be specified'],
   },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
   place: {
     type: mongoose.Schema.ObjectId,
     ref: 'Place',

@@ -12,16 +12,21 @@ const placeSchema = new mongoose.Schema({
     type: Number,
     required: [true, 'Length must be specified'],
   },
-  longitude: {
-    type: String,
+  coordinates: {
+    longitude: {
+      type: Number,
+    },
+    lattitude: {
+      type: Number,
+    },
   },
-  lattitude: {
+  address: {
     type: String,
   },
   city: {
     type: String,
   },
-  telephone: {
+  phone: {
     type: String,
   },
 });
